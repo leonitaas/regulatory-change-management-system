@@ -1,4 +1,6 @@
 from pathlib import Path
+from datetime import datetime, timezone
+from uuid import uuid4
 
 from schemas.context_packet_schema import (
     ContextPacket,
@@ -26,8 +28,12 @@ def build_context_packet(file_path: str) -> ContextPacket:
         sections.append(section)
 
     context_packet = ContextPacket(
+        document_id=f"DOC-{uuid4()}",
         source_file=path.name,
         document_type="pdf",
+        document_title=path.stem,
+        ingestion_timestamp=datetime.now(timezone.utc).isoformat(),
+        processing_status="completed",
         total_pages=len(pages),
         sections=sections
     )

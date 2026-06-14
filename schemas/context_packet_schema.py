@@ -1,5 +1,6 @@
+
 from pydantic import BaseModel
-from typing import List
+from typing import List, Optional
 
 
 class EvidencePointer(BaseModel):
@@ -14,7 +15,11 @@ class DocumentSection(BaseModel):
 
 
 class ContextPacket(BaseModel):
+    document_id: str
     source_file: str
     document_type: str
+    document_title: Optional[str] = None
+    ingestion_timestamp: str
+    processing_status: str
     total_pages: int
     sections: List[DocumentSection]
