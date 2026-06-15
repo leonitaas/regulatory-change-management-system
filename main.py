@@ -1,19 +1,30 @@
 from agents.agent_gatekeeper import build_context_packet
+from agents.agent_change_extraction import extract_changes
+
 from utils.json_writer import save_json
 
 
 def main():
     input_file = "data/input/regulation.pdf"
-    output_file = "data/output/context_packet.json"
 
     context_packet = build_context_packet(input_file)
 
     save_json(
         context_packet.model_dump(),
-        output_file
+        "data/output/context_packet.json"
     )
 
-    print(f"Context packet created successfully: {output_file}")
+    change_register = extract_changes(context_packet)
+
+    save_json(
+        change_register.model_dump(),
+        "data/output/change_register.json"
+    )
+
+    print("IRCMS pipeline executed successfully.")
+    print("Generated:")
+    print("- context_packet.json")
+    print("- change_register.json")
 
 
 if __name__ == "__main__":
