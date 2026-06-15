@@ -159,14 +159,17 @@ def extract_changes(context_packet: ContextPacket) -> ChangeRegister:
                 change_id=f"CHG-{change_counter:03}",
                 document_id=context_packet.document_id,
                 section_id=section.section_id,
+                aggregation_group=f"AGG-{section.section_id}",
                 requirement_text=sentence,
                 requirement_type=requirement_type,
                 confidence_score=confidence_score,
                 validation_status=validation_status,
                 validation_notes=validation_notes,
                 evidence=ChangeEvidence(
+                    evidence_id=section.evidence.evidence_id,
                     page_number=section.page_number,
-                    section_id=section.section_id
+                    section_id=section.section_id,
+                    bounding_box=section.evidence.bounding_box
                 )
             )
 

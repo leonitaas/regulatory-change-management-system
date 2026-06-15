@@ -1,10 +1,19 @@
 from pydantic import BaseModel
-from typing import List
+from typing import List, Optional
+
+
+class BoundingBox(BaseModel):
+    x0: float
+    y0: float
+    x1: float
+    y1: float
 
 
 class ChangeEvidence(BaseModel):
+    evidence_id: str
     page_number: int
     section_id: str
+    bounding_box: Optional[BoundingBox] = None
 
 
 class RegulatoryChange(BaseModel):
@@ -17,6 +26,7 @@ class RegulatoryChange(BaseModel):
     validation_status: str
     validation_notes: str
     evidence: ChangeEvidence
+    aggregation_group: str
 
 
 class ChangeRegister(BaseModel):

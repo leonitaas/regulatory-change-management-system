@@ -22,7 +22,9 @@ def build_context_packet(file_path: str) -> ContextPacket:
             page_number=page["page_number"],
             text=page["text"],
             evidence=EvidencePointer(
-                page_number=page["page_number"]
+                evidence_id=f"EVD-{page['page_number']:03}",
+                page_number=page["page_number"],
+                bounding_box=None
             )
         )
         sections.append(section)

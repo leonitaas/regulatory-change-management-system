@@ -3,8 +3,17 @@ from pydantic import BaseModel
 from typing import List, Optional
 
 
+class BoundingBox(BaseModel):
+    x0: float
+    y0: float
+    x1: float
+    y1: float
+
+
 class EvidencePointer(BaseModel):
+    evidence_id: str
     page_number: int
+    bounding_box: Optional[BoundingBox] = None
 
 
 class DocumentSection(BaseModel):
