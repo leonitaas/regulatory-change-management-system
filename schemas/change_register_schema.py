@@ -14,6 +14,8 @@ class RegulatoryChange(BaseModel):
     requirement_text: str
     requirement_type: str
     confidence_score: float
+    validation_status: str
+    validation_notes: str
     evidence: ChangeEvidence
 
 
