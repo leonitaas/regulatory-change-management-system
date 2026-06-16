@@ -1,0 +1,33 @@
+[
+  {
+    "requirement_id": "REQ-001",
+    "requirement_text": "The organization must document access reviews for privileged users.",
+    "jurisdiction": "EU",
+    "applicable_jurisdictions": ["EU"]
+  },
+  {
+    "requirement_id": "REQ-002",
+    "requirement_text": "Security policies must be reviewed and updated annually.",
+    "jurisdiction": "UK",
+    "applicable_jurisdictions": ["UK", "EU"]
+  },
+  {
+    "requirement_id": "REQ-003",
+    "requirement_text": "Third-party risk assessments must be performed before onboarding vendors.",
+    "jurisdiction": "US",
+    "applicable_jurisdictions": ["US"],
+    "conflicting_standard": "Regional vendor due diligence timing differs"
+  },
+  {
+    "requirement_id": "REQ-004",
+    "requirement_text": "Critical system changes must receive formal approval before deployment.",
+    "jurisdiction": "EU",
+    "applicable_jurisdictions": ["EU", "US"]
+  },
+  {
+  "requirement_id": "REQ-005",
+  "requirement_text": "The organization must maintain a formal business continuity plan that is tested annually.",
+  "jurisdiction": "EU",
+  "applicable_jurisdictions": ["EU"]
+}
+]

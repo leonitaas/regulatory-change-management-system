@@ -1,0 +1,26 @@
+[
+  {
+    "control_id": "CTRL-001",
+    "control_name": "Privileged Access Review Control",
+    "description": "Quarterly review and evidence retention for privileged user access.",
+    "jurisdiction": "EU"
+  },
+  {
+    "control_id": "CTRL-002",
+    "control_name": "Policy Governance Control",
+    "description": "Annual review cycle for information security policies and procedures.",
+    "jurisdiction": "UK"
+  },
+  {
+    "control_id": "CTRL-003",
+    "control_name": "Vendor Due Diligence",
+    "description": "Third-party onboarding includes initial due diligence and risk review.",
+    "jurisdiction": "US"
+  },
+  {
+    "control_id": "CTRL-004",
+    "control_name": "Change Approval Workflow",
+    "description": "System changes require approval tickets before release to production.",
+    "jurisdiction": "Global"
+  }
+]
