@@ -169,7 +169,11 @@ def extract_changes(context_packet: ContextPacket) -> ChangeRegister:
                     evidence_id=section.evidence.evidence_id,
                     page_number=section.page_number,
                     section_id=section.section_id,
-                    bounding_box=section.evidence.bounding_box
+                    bounding_box=(
+                        section.evidence.bounding_box.model_dump()
+                        if section.evidence.bounding_box
+                        else None
+                    )
                 )
             )
 
