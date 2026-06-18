@@ -14,7 +14,8 @@ env/
 .DS_Store
 Thumbs.db
 
-data/output/
+data/output/*
+!data/output/.gitkeep
 
 *.egg-info/
 dist/
