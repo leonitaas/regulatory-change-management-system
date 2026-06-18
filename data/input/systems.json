@@ -1,0 +1,20 @@
+[
+  {
+    "id": "SYS-01",
+    "name": "AML Monitoring Platform",
+    "description": "Transaction monitoring and sanctions screening engine.",
+    "controls": ["legacy_sanctions_screening", "suspicious_activity_alerts"]
+  },
+  {
+    "id": "SYS-02",
+    "name": "Client CRM",
+    "description": "System of record for client accounts and their lifecycle.",
+    "controls": ["account_status_tracking"]
+  },
+  {
+    "id": "SYS-03",
+    "name": "Order Management System",
+    "description": "Trade capture, routing and execution records.",
+    "controls": ["trade_capture", "venue_routing"]
+  }
+]

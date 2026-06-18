@@ -1,0 +1,42 @@
+[
+  {
+    "id": "REQ-AML-01",
+    "title": "Enhanced Sanctions Screening",
+    "description": "Screen all client and counterparty payments against updated global sanctions lists in near-real-time, with secondary review of every potential match within 24 hours.",
+    "source": "OFAC / EU Consolidated Sanctions Update 2026",
+    "category": "AML",
+    "effective_date": "2026-09-30"
+  },
+  {
+    "id": "REQ-PRIV-02",
+    "title": "Client Data Retention Limits",
+    "description": "Delete or anonymise personal client data within 24 months of account closure unless an active legal hold applies.",
+    "source": "State Privacy Act Amendment",
+    "category": "Data Privacy",
+    "effective_date": "2026-08-15"
+  },
+  {
+    "id": "REQ-MKT-03",
+    "title": "Performance Advertising Disclosures",
+    "description": "All advertised performance figures must present net-of-fees returns over standardised time periods with the prescribed disclosures.",
+    "source": "SEC Marketing Rule 206(4)-1",
+    "category": "Marketing",
+    "effective_date": "2026-12-01"
+  },
+  {
+    "id": "REQ-EXE-04",
+    "title": "Best Execution Monitoring",
+    "description": "Maintain quarterly best-execution reviews across all venues with documented rationale for venue selection.",
+    "source": "MiFID II RTS 27/28 equivalent",
+    "category": "Best Execution",
+    "effective_date": "2026-10-31"
+  },
+  {
+    "id": "REQ-RPT-05",
+    "title": "T+1 Trade Reporting",
+    "description": "Report all eligible securities transactions to the regulator by end of trade date plus one (T+1).",
+    "source": "Trade Reporting Modernisation Rule",
+    "category": "Trade Reporting",
+    "effective_date": "2026-11-15"
+  }
+]

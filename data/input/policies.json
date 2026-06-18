@@ -1,0 +1,23 @@
+[
+  {
+    "id": "POL-01",
+    "title": "AML & Sanctions Policy",
+    "description": "KYC, sanctions screening and suspicious-activity reporting standards.",
+    "last_reviewed": "2025-01-10",
+    "covers_requirements": ["REQ-AML-01"]
+  },
+  {
+    "id": "POL-02",
+    "title": "Marketing Communications Policy",
+    "description": "Standards for advertising, performance reporting and disclosures.",
+    "last_reviewed": "2026-03-01",
+    "covers_requirements": ["REQ-MKT-03"]
+  },
+  {
+    "id": "POL-03",
+    "title": "Data Protection Policy",
+    "description": "Handling, storage and retention of personal client data.",
+    "last_reviewed": "2024-11-01",
+    "covers_requirements": ["REQ-PRIV-02"]
+  }
+]
