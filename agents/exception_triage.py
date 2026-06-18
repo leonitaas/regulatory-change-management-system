@@ -25,11 +25,9 @@ class ExceptionTriageAgent:
     def merge_findings(self, data: Dict[str, Any]) -> List[Dict[str, Any]]:
         findings: List[Dict[str, Any]] = []
 
-       
         change_register = data.get("change_register", {})
         changes = change_register.get("changes", [])
 
-       
         gap_items = data.get("gap_analysis", {}).get("items", [])
         impact_items = data.get("impact_matrix", {}).get("items", [])
         control_items = data.get("control_mapping", {}).get("items", [])
@@ -38,23 +36,24 @@ class ExceptionTriageAgent:
         impacts = {item["requirement_id"]: item for item in impact_items}
         controls = {item["requirement_id"]: item for item in control_items}
 
-    
         for idx, change in enumerate(changes):
-        
             requirement_id = f"REQ-{idx+1:03d}"
-
-            requirement_text = (
-                change.get("requirement_text")
-                or ""
-            )
 
             findings.append(
                 {
+                    "change_id": change.get("change_id"),
                     "requirement_id": requirement_id,
-                    "requirement_text": requirement_text,
-                    "jurisdiction": None,  
+                    "requirement_text": change.get("requirement_text", ""),
+                    "requirement_type": change.get("requirement_type"),
+                    "confidence_score": change.get("confidence_score"),
+                    "validation_status": change.get("validation_status"),
+                    "validation_notes": change.get("validation_notes"),
+                    "jurisdiction": change.get("jurisdiction"),
                     "gap_status": gaps.get(requirement_id, {}).get("gap_status"),
+                    "gap_reason": gaps.get(requirement_id, {}).get("gap_reason"),
                     "impact_level": impacts.get(requirement_id, {}).get("impact_level"),
+                    "risk_level": impacts.get(requirement_id, {}).get("risk_level"),
+                    "affected_area": impacts.get(requirement_id, {}).get("affected_area"),
                     "mapping_status": controls.get(requirement_id, {}).get("mapping_status"),
                     "owner_suggestion": controls.get(requirement_id, {}).get("owner_suggestion"),
                     "recommended_action": controls.get(requirement_id, {}).get("recommended_control_action"),
@@ -81,10 +80,13 @@ class ExceptionTriageAgent:
     def prioritize_finding(self, finding: Dict[str, Any]) -> str:
         impact = finding.get("impact_level")
         mapping = finding.get("mapping_status")
+        gap_status = finding.get("gap_status")
 
         if impact == "HIGH" and mapping == "missing":
             return "P1"
         if impact in ["HIGH", "MEDIUM"] and mapping == "partial":
+            return "P2"
+        if gap_status == "missing_policy":
             return "P2"
         return "P3"
 
@@ -101,7 +103,12 @@ class ExceptionTriageAgent:
                     "exception_category": category,
                     "priority": priority,
                     "routing_team": finding.get("owner_suggestion") or "Compliance Team",
-                    "decision_reason": f"Assigned {priority} due to impact={finding.get('impact_level')} and mapping={finding.get('mapping_status')}.",
+                    "decision_reason": (
+                        f"Assigned {priority} due to "
+                        f"impact={finding.get('impact_level')}, "
+                        f"mapping={finding.get('mapping_status')}, "
+                        f"gap_status={finding.get('gap_status')}."
+                    ),
                 }
             )
 
@@ -125,6 +132,7 @@ class ExceptionTriageAgent:
             "generated_at": report["generated_at"],
             "audit_trail": [
                 {
+                    "change_id": item.get("change_id"),
                     "requirement_id": item["requirement_id"],
                     "priority": item["priority"],
                     "category": item["exception_category"],
