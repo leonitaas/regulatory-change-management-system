@@ -27,9 +27,15 @@ class RegulatoryChange(BaseModel):
     validation_notes: str
     evidence: ChangeEvidence
     aggregation_group: str
+    extraction_method: str
+    llm_model: Optional[str] = None
 
 
 class ChangeRegister(BaseModel):
     document_id: str
     total_changes: int
+    extraction_method: str
+    llm_model: Optional[str] = None
+    extraction_summary: str
     changes: List[RegulatoryChange]
+    

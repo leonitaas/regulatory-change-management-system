@@ -159,12 +159,14 @@ def extract_changes(context_packet: ContextPacket) -> ChangeRegister:
                 change_id=f"CHG-{change_counter:03}",
                 document_id=context_packet.document_id,
                 section_id=section.section_id,
-                aggregation_group=f"AGG-{section.section_id}",
+                aggregation_group=f"AGG-{requirement_type.upper()}",
                 requirement_text=sentence,
                 requirement_type=requirement_type,
                 confidence_score=confidence_score,
                 validation_status=validation_status,
                 validation_notes=validation_notes,
+                extraction_method="rule_based",
+                llm_model=None,
                 evidence=ChangeEvidence(
                     evidence_id=section.evidence.evidence_id,
                     page_number=section.page_number,
@@ -183,5 +185,12 @@ def extract_changes(context_packet: ContextPacket) -> ChangeRegister:
     return ChangeRegister(
         document_id=context_packet.document_id,
         total_changes=len(changes),
+        extraction_method="rule_based",
+        llm_model=None,
+        extraction_summary=(
+            f"Extracted {len(changes)} regulatory changes using "
+            "rule-based sentence classification."
+        ),
+        
         changes=changes
     )
