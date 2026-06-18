@@ -1,5 +1,6 @@
 from agents.agent_gatekeeper import build_context_packet
 from agents.agent_change_extraction import extract_changes
+from agents.agent_change_extraction import extract_changes_with_llm
 
 from utils.json_writer import save_json
 
@@ -14,7 +15,7 @@ def main():
         "data/output/context_packet.json"
     )
 
-    change_register = extract_changes(context_packet)
+    change_register = extract_changes_with_llm(context_packet)
 
     save_json(
         change_register.model_dump(),
